@@ -5,9 +5,15 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#iddiv {
+  width: 50px; 
+  height: 50px; 
+  text-align: center; 
+  border-radius: 50%; 
+  background-color: #2ECC71; 
+  font-size: 28px; 
+  color: white; 
+  padding: 2;
 }
 
 

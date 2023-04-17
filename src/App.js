@@ -120,16 +120,20 @@ function App() {
                       <tr>
                         <td><div id="iddiv">{ task.id }</div></td>
                         <td>{ task.task }</td>
-                        <td><i v-show="task.status === 'Completed'" class="bi bi-check-circle-fill" 
-                          style={ statusStyle }></i></td>
+                        <td>{ task.status === 'Completed' && (
+                          <i class="bi bi-check-circle-fill" style={ statusStyle }></i>
+                        ) }</td>
                         <td>
-                          <Button
-                            v-show="task.status === 'Ongoing'"
-                            text={'Mark as completed'}
-                            onClick={ () => completed( task.id ) }
-                            class_name={'btn btn-primary'}
-                            style={{ paddingLeft: '4px', marginRight: '4px' }}
-                          />    
+                          {
+                            task.status === 'Ongoing' && (
+                              <Button
+                                text={'Mark as completed'}
+                                onClick={ () => completed( task.id ) }
+                                class_name={'btn btn-primary'}
+                                style={{ paddingLeft: '4px', marginRight: '4px' }}
+                              />    
+                            )
+                          }
                         </td>
                       </tr>
                     </tbody>
