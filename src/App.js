@@ -5,6 +5,7 @@ import axios from 'axios'
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [inputValue, setInputValue] = useState('');
   const divStyle = {
     with: '800px',
   };
@@ -29,7 +30,16 @@ function App() {
 
   };
   const addTask = async () => {
-    return ''
+    const v = { "id": (11), "task":inputValue, "status":"Ongoing", "favorite":0 }
+    const res = await axios.post('http://127.0.0.1:3000/task/', v,
+      {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+      }
+    );
+    console.log(res);
   };
   const getData = async () => {
     const res = await axios.get("http://127.0.0.1:3000/task");
@@ -69,9 +79,10 @@ function App() {
       <h1 style={ centerText }>Reactjs with Redux<br />(Task management)</h1><br />
       <div style={ contentStyle }>
       <div style={ divInputStyle }>
-        <input type="text" id="txtaddTask"  class="form-control" v-model="taks_input" 
+        <input type="text" id="txtaddTask"  class="form-control"
+          onChange={(e) => setInputValue(e.target.value)} 
           placeholder="Add task"
-          style={{ width: '180px' }} />
+          style={{ width: '180px' }}></input>
         <Button
           text={'Add Task'}
           onClick={ () => addTask() }
