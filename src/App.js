@@ -39,8 +39,21 @@ function App() {
   const TasksList = (v) => {
     setTasks(tasks.filter((task) => { return task.status === v }))
   };
-  const completed = (v) => {
-    return ''
+  const completed = async (id) => {
+    let confirm_message = "Confirm to update task as completed"
+    if (window.confirm(confirm_message) === false) {
+        return false;
+    }
+    const v = { "status":"Completed" }
+    const res = await axios.patch(`http://127.0.0.1:3000/task/${id}`, v,
+      {
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+      }
+    );
+    console.log(res);
   };
   const taskStyle = {
     padding: '8px',
@@ -102,7 +115,7 @@ function App() {
                           <Button
                             v-show="task.status === 'Ongoing'"
                             text={'Mark as completed'}
-                            onClick={ () => completed(task) }
+                            onClick={ () => completed( task.id ) }
                             class_name={'btn btn-primary'}
                             style={{ paddingLeft: '4px', marginRight: '4px' }}
                           />    

@@ -1,31 +1,31 @@
 {
-    "task": [
-      {
-        "id": 1,
-        "task": "Travel to the next city",
-        "status": "Completed"
-      },
-      {
-        "id": 2,
-        "task": "Travel to the longest city",
-        "status": "Completed"
-      },
-      {
-        "id": 3,
-        "task": "Travel to remote area",
-        "status": "Ongoing"
-      },
-      {
-        "id": 4,
-        "task": "Return to home",
-        "status": "Ongoing",
-        "favorite": 0
-      },
-      {
-        "id": 5,
-        "task": "Test",
-        "status": "Ongoing",
-        "favorite": 0
-      }
-    ]
-  }
+  "task": [
+    {
+      "id": 1,
+      "task": "Travel to the next city",
+      "status": "Completed"
+    },
+    {
+      "id": 2,
+      "task": "Travel to the longest city",
+      "status": "Completed"
+    },
+    {
+      "id": 3,
+      "task": "Travel to remote area",
+      "status": "Ongoing"
+    },
+    {
+      "id": 4,
+      "task": "Return to home",
+      "status": "Completed",
+      "favorite": 0
+    },
+    {
+      "id": 5,
+      "task": "Test",
+      "status": "Completed",
+      "favorite": 0
+    }
+  ]
+}
