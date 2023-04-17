@@ -37,7 +37,7 @@ function App() {
     console.log(res);
   };
   const TasksList = (v) => {
-    return ''
+    setTasks(tasks.filter((task) => { return task.status === v }))
   };
   const completed = (v) => {
     return ''
