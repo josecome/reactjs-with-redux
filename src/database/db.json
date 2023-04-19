@@ -8,7 +8,7 @@
     {
       "id": 2,
       "task": "Travel to the longest city",
-      "status": "Completed"
+      "status": "Ongoing"
     },
     {
       "id": 3,
@@ -18,7 +18,13 @@
     {
       "id": 4,
       "task": "Return to home",
-      "status": "Completed",
+      "status": "Ongoing",
+      "favorite": 0
+    },
+    {
+      "id": 5,
+      "task": "Travel to Mozambique",
+      "status": "Ongoing",
       "favorite": 0
     }
   ]

@@ -1,10 +1,17 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import Button from './components/Button';
+import { useSelector, useDispatch } from 'react-redux'
+import { loadTasks, filterTasks } from './features/tasks/storeTasks'
 import axios from 'axios'
 
 function App() {
-  const [tasks, setTasks] = useState([]);
+
+  const tasks = useSelector((state) => state.storetask.tasks)
+  const totalTasks = useSelector((state) => state.storetask.tasks.length )
+  const dispatch = useDispatch()
+
+  // const [tasks, setTasks] = useState([]);
   const [inputValue, setInputValue] = useState('');
   const divStyle = {
     with: '800px',
@@ -30,7 +37,7 @@ function App() {
 
   };
   const addTask = async () => {
-    const v = { "id": (11), "task":inputValue, "status":"Ongoing", "favorite":0 }
+    const v = { "id": (Number(totalTasks) + 1), "task":inputValue, "status":"Ongoing", "favorite":0 }
     const res = await axios.post('http://127.0.0.1:3000/task/', v,
       {
         headers: {
@@ -43,11 +50,12 @@ function App() {
   };
   const getData = async () => {
     const res = await axios.get("http://127.0.0.1:3000/task");
-    setTasks(res.data)
+    dispatch(loadTasks(res.data))
     console.log(res);
   };
   const TasksList = (v) => {
-    setTasks(tasks.filter((task) => { return task.status === v }))
+    console.log(tasks.filter((task) => { return task.status === v }))
+    dispatch(filterTasks(tasks.filter((task) => { return task.status === v })))
   };
   const completed = async (id) => {
     let confirm_message = "Confirm to update task as completed"
@@ -90,7 +98,7 @@ function App() {
         />
       </div>
       <div style={ contentStyle }>
-          Total tasks: <br />
+          Total tasks: { totalTasks }<br />
           <div style={ marginBottom }>
             <Button
               text={'All tasks'}
@@ -113,7 +121,7 @@ function App() {
           </div>
           <div style={ alltasks }>
             {
-              tasks.map((task) => ( 
+              tasks?.map((task) => ( 
                 <div key={tasks.indexOf(task)} style={ taskStyle } >
                   <table>
                     <tbody>
